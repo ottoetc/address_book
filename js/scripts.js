@@ -30,14 +30,17 @@ function resetFields() {
   $("input.new-state").val("");
 }
 
-function addAddress() {
-  $("#add-address").click(function() {
-    $("#new-addresses").append('<div class="new-address">' + '<div class="form-group">' + '<label for="new-address-type">Address type</label>' + '<select class="form-control new-address-type">' + '<option></option>' + '<option>Home</option>' + '<option>Work</option>' + '<option>School</option>' + '<option>Other</option>' + '</select>' + '</div>' + '<div class="form-group">' + '<label for="new-street">Street</label>' + '<input type="text" class="form-control new-street">' + '</div>' + '<div class="form-group">' + '<label for="new-city">City</label>' + '<input type="text" class="form-control new-city">' + '</div>' + '<div class="form-group">' + '<label for="new-state">State</label>' + '<input type="text" class="form-control new-state">' + '</div>' + '</div>');
-  });
-}
+// function addAddress() {
+//   $("#add-address").click(function() {
+//     $("#new-addresses").append('<div class="add-address">' + '<div class="form-group">' + '<label for="new-address-type">Address type</label>' + '<select class="form-control new-address-type">' + '<option></option>' + '<option>Home</option>' + '<option>Work</option>' + '<option>School</option>' + '<option>Other</option>' + '</select>' + '</div>' + '<div class="form-group">' + '<label for="new-street">Street</label>' + '<input type="text" class="form-control new-street">' + '</div>' + '<div class="form-group">' + '<label for="new-city">City</label>' + '<input type="text" class="form-control new-city">' + '</div>' + '<div class="form-group">' + '<label for="new-state">State</label>' + '<input type="text" class="form-control new-state">' + '</div>' + '</div>');
+//   });
+// }
 
 $(document).ready(function() {
-  addAddress();
+  //addAddress();
+  $("#add-address").click(function() {
+    $("#new-addresses").append('<div class="add-address">' + '<div class="form-group">' + '<label for="new-address-type">Address type</label>' + '<select class="form-control new-address-type">' + '<option></option>' + '<option>Home</option>' + '<option>Work</option>' + '<option>School</option>' + '<option>Other</option>' + '</select>' + '</div>' + '<div class="form-group">' + '<label for="new-street">Street</label>' + '<input type="text" class="form-control new-street">' + '</div>' + '<div class="form-group">' + '<label for="new-city">City</label>' + '<input type="text" class="form-control new-city">' + '</div>' + '<div class="form-group">' + '<label for="new-state">State</label>' + '<input type="text" class="form-control new-state">' + '</div>' + '</div>');
+  });
 
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
@@ -46,14 +49,14 @@ $(document).ready(function() {
     var inputtedLastName = $("input#new-last-name").val();
     var newContact = new Contact(inputtedFirstName, inputtedLastName);
 
-  $(".new-address").each(function() {
-    var inputtedAddressType = $(this).find("select.new-address-type").val();
-    var inputtedStreet = $(this).find("input.new-street").val();
-    var inputtedCity = $(this).find("input.new-city").val();
-    var inputtedState = $(this).find("input.new-state").val();
-    var newAddress = new Address(inputtedAddressType, inputtedStreet, inputtedCity, inputtedState);
-    newContact.addresses.push(newAddress);
-  });
+    $(".new-address").each(function() {
+      var inputtedAddressType = $(this).find("select.new-address-type").val();
+      var inputtedStreet = $(this).find("input.new-street").val();
+      var inputtedCity = $(this).find("input.new-city").val();
+      var inputtedState = $(this).find("input.new-state").val();
+      var newAddress = new Address(inputtedAddressType, inputtedStreet, inputtedCity, inputtedState);
+      newContact.addresses.push(newAddress);
+    });
 
     $("ul#contacts").append("<li><span class='contact'>" + newContact.fullName() + "</span></li>");
 
@@ -67,6 +70,8 @@ $(document).ready(function() {
         $("ul#addresses").append("<li>" + address.fullAddress() + "</li>");
       });
     });
+
+    $("div#new-addresses").children().not(".new-address").hide();
 
     resetFields();
 
