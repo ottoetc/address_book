@@ -19,7 +19,7 @@ Address.prototype.fullAddress = function() {
 
 $(document).ready(function() {
   $("#add-address").click(function() {
-    $("#new-addresses").append('<div class="new-address">' + '<div class="form-group">' + '<label for="new-address-type">Address type</label>' + '<select class="form-control new-address-type">' + '<option>Home</option>' + '<option>Work</option>' + '<option>School</option>' + '<option>Other</option>' + '</select>' + '</div>' + '<div class="form-group">' + '<label for="new-street">Street</label>' + '<input type="text" class="form-control new-street">' + '</div>' + '<div class="form-group">' + '<label for="new-city">City</label>' + '<input type="text" class="form-control new-city">' + '</div>' + '<div class="form-group">' + '<label for="new-state">State</label>' + '<input type="text" class="form-control new-state">' + '</div>' + '</div>');
+    $("#new-addresses").append('<div class="new-address">' + '<div class="form-group">' + '<label for="new-address-type">Address type</label>' + '<select class="form-control new-address-type">' + '<option></option>' + '<option>Home</option>' + '<option>Work</option>' + '<option>School</option>' + '<option>Other</option>' + '</select>' + '</div>' + '<div class="form-group">' + '<label for="new-street">Street</label>' + '<input type="text" class="form-control new-street">' + '</div>' + '<div class="form-group">' + '<label for="new-city">City</label>' + '<input type="text" class="form-control new-city">' + '</div>' + '<div class="form-group">' + '<label for="new-state">State</label>' + '<input type="text" class="form-control new-state">' + '</div>' + '</div>');
   });
   $("form#new-contact").submit(function(event) {
     event.preventDefault();
@@ -42,6 +42,7 @@ $(document).ready(function() {
 
     $("input#new-first-name").val("");
     $("input#new-last-name").val("");
+    $("select.new-address-type").val("");
     $("input.new-street").val("");
     $("input.new-city").val("");
     $("input.new-state").val("");
